@@ -1,11 +1,17 @@
 import os
-import time
+import platform # Para identificar o sistema operacional
+import time # Para monitorar as teclas pressionadas
 import keyboard  # Para monitorar as teclas pressionadas
 
 player = {"name": "python", "x": 0, "y": 0}
 map_width = 10
 map_height = 5
 
+def clear_screen():
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
 
 def walk(direction):
     if direction == "d" and player['x'] < map_width - 1:
@@ -18,7 +24,7 @@ def walk(direction):
         player['y'] += 1
 
 while True:
-    os.system('clear')
+    clear_screen()
 
     print("-------------------------")
 
